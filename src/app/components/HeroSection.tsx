@@ -7,8 +7,8 @@ const kpiData = [
     title: 'Propietarios Solventes',
     value: '248',
     icon: Users,
-    color: '#4CAF50',
-    gradient: 'linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%)',
+    color: '#3B82F6',
+    gradient: 'linear-gradient(135deg, #3B82F6 0%, #7BA5F5 100%)',
   },
   {
     title: 'Propietarios Deudores',
@@ -80,7 +80,7 @@ export function HeroSection() {
         <div 
           className="absolute bottom-0 left-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl"
           style={{
-            background: 'radial-gradient(circle, #4CAF50 0%, transparent 70%)',
+            background: 'radial-gradient(circle, #3B82F6 0%, transparent 70%)',
             animation: 'float 8s ease-in-out infinite reverse'
           }}
         />
@@ -120,7 +120,7 @@ export function HeroSection() {
             Simplifica la Gestión
             <br />
             <span style={{
-              background: 'linear-gradient(135deg, #5B8DEF 0%, #4CAF50 100%)',
+              background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
@@ -151,7 +151,7 @@ export function HeroSection() {
               onClick={scrollToCTA}
               className="group px-10 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3" 
               style={{
-                background: 'linear-gradient(135deg, #5B8DEF 0%, #4CAF50 100%)',
+                background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
                 color: 'white',
                 fontSize: '1.125rem',
                 fontWeight: '600',

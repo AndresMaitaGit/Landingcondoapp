@@ -1,5 +1,6 @@
-import { Moon, Sun, Building2 } from 'lucide-react';
+import { Moon, Sun } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import logo from '../img/vivesoft-icon.svg';
 
 export function Header() {
   const [isDark, setIsDark] = useState(false);
@@ -50,17 +51,17 @@ export function Header() {
       <div className="container mx-auto px-8 py-5">
         <nav className="flex items-center justify-between">
           <div className="flex items-center gap-3 group cursor-pointer">
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{
-              background: 'linear-gradient(135deg, #5B8DEF 0%, #4CAF50 100%)',
+            {/* <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{
+              background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
               boxShadow: '0 8px 24px rgba(91, 141, 239, 0.35)'
-            }}>
-              <Building2 className="w-6 h-6 text-white" />
-            </div>
+            }}> */}
+              <img src={logo} alt="ViveSoft" className="w-6 h-6" />
+            {/* </div> */}
             <span className="text-xl tracking-tight" style={{
               color: isDark ? '#FFFFFF' : '#0F1419',
               fontWeight: '600'
             }}>
-              CondoApp
+              ViveSoft
             </span>
           </div>
           
@@ -109,7 +110,7 @@ export function Header() {
             <button 
               className="px-7 py-2.5 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl" 
               style={{
-                background: 'linear-gradient(135deg, #5B8DEF 0%, #4CAF50 100%)',
+                background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
                 color: 'white',
                 fontWeight: '500',
                 boxShadow: '0 8px 24px rgba(91, 141, 239, 0.35)'

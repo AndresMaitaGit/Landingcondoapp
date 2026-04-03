@@ -14,8 +14,8 @@ const features = [
     title: 'Gastos de Residencia',
     description: 'Control total sobre los ingresos y egresos del condominio. Categoriza gastos, genera reportes y mantén las finanzas transparentes.',
     icon: DollarSign,
-    color: '#4CAF50',
-    gradient: 'linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%)',
+    color: '#3B82F6',
+    gradient: 'linear-gradient(135deg, #3B82F6 0%, #7BA5F5 100%)',
   },
   {
     title: 'Pagos Mensuales',
@@ -42,7 +42,7 @@ const features = [
 
 const stats = [
   { value: '99.9%', label: 'Disponibilidad', color: '#5B8DEF' },
-  { value: '500+', label: 'Condominios', color: '#4CAF50' },
+  { value: '500+', label: 'Condominios', color: '#3B82F6' },
   { value: '24/7', label: 'Soporte Premium', color: '#FF9800' },
   { value: '100%', label: 'Seguro', color: '#00BCD4' },
 ];
@@ -157,10 +157,10 @@ export function FeaturesSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-8 rounded-3xl p-12"
-          style={{
+            style={{
             background: isDark 
-              ? 'linear-gradient(135deg, rgba(91, 141, 239, 0.08) 0%, rgba(76, 175, 80, 0.08) 100%)'
-              : 'linear-gradient(135deg, rgba(91, 141, 239, 0.05) 0%, rgba(76, 175, 80, 0.05) 100%)',
+              ? 'linear-gradient(135deg, rgba(91, 141, 239, 0.08) 0%, rgba(91, 141, 239, 0.08) 100%)'
+              : 'linear-gradient(135deg, rgba(91, 141, 239, 0.05) 0%, rgba(91, 141, 239, 0.05) 100%)',
             border: `1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`
           }}
         >

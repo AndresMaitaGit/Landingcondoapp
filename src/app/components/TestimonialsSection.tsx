@@ -7,7 +7,7 @@ const testimonials = [
     name: 'María González',
     role: 'Administradora',
     company: 'Residencial Los Pinos',
-    content: 'CondoApp ha transformado completamente nuestra forma de trabajar. La transparencia en los pagos y la facilidad de generar reportes nos ha ahorrado incontables horas cada mes.',
+    content: 'ViveSoft ha transformado completamente nuestra forma de trabajar. La transparencia en los pagos y la facilidad de generar reportes nos ha ahorrado incontables horas cada mes.',
     rating: 5,
     avatar: 'MG',
     color: '#5B8DEF',
@@ -19,13 +19,13 @@ const testimonials = [
     content: 'Excelente plataforma. Los propietarios ahora pueden ver su estado de cuenta en tiempo real, lo que ha reducido las quejas y mejorado significativamente la comunicación.',
     rating: 5,
     avatar: 'CR',
-    color: '#4CAF50',
+    color: '#3B82F6',
   },
   {
     name: 'Ana Martínez',
     role: 'Contadora',
     company: 'Condominio Vista Hermosa',
-    content: 'La gestión de gastos y la generación automática de documentos son increíbles. Todo está organizado y accesible. Recomiendo CondoApp al 100% sin dudarlo.',
+    content: 'La gestión de gastos y la generación automática de documentos son increíbles. Todo está organizado y accesible. Recomiendo ViveSoft al 100% sin dudarlo.',
     rating: 5,
     avatar: 'AM',
     color: '#FF9800',
@@ -63,10 +63,10 @@ export function TestimonialsSection() {
         >
           <div className="inline-block mb-4 px-5 py-2 rounded-full" style={{
             background: isDark 
-              ? 'rgba(76, 175, 80, 0.1)' 
-              : 'rgba(76, 175, 80, 0.08)',
-            border: `1px solid ${isDark ? 'rgba(76, 175, 80, 0.2)' : 'rgba(76, 175, 80, 0.15)'}`,
-            color: '#4CAF50',
+              ? 'rgba(91, 141, 239, 0.1)' 
+              : 'rgba(91, 141, 239, 0.08)',
+            border: `1px solid ${isDark ? 'rgba(91, 141, 239, 0.2)' : 'rgba(91, 141, 239, 0.15)'}`,
+            color: '#3B82F6',
             fontWeight: '500',
             fontSize: '0.875rem'
           }}>
@@ -190,7 +190,7 @@ export function TestimonialsSection() {
                 borderColor: isDark ? '#0F1419' : '#FFFFFF'
               }}></div>
               <div className="w-10 h-10 rounded-full border-2" style={{
-                background: 'linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%)',
+                background: 'linear-gradient(135deg, #3B82F6 0%, #7BA5F5 100%)',
                 borderColor: isDark ? '#0F1419' : '#FFFFFF'
               }}></div>
               <div className="w-10 h-10 rounded-full border-2" style={{

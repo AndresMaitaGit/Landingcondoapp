@@ -1,4 +1,4 @@
-import { Building2, Facebook, Twitter, Linkedin, Instagram, Github } from 'lucide-react';
+import logo from '../img/vivesoft-icon.svg';
 import { useState, useEffect } from 'react';
 
 export function Footer() {
@@ -25,16 +25,16 @@ export function Footer() {
         {/* Brand section - Centered */}
         <div className="text-center mb-12">
           <div className="flex items-center gap-3 mb-6 justify-center group cursor-pointer">
-            <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{
-              background: 'linear-gradient(135deg, #5B8DEF 0%, #4CAF50 100%)',
+            {/* <div className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110" style={{
+              background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
               boxShadow: '0 8px 24px rgba(91, 141, 239, 0.35)'
-            }}>
-              <Building2 className="w-6 h-6 text-white" />
-            </div>
+            }}> */}
+              <img src={logo} alt="ViveSoft" className="w-6 h-6" />
+            {/* </div> */}
             <span className="text-xl tracking-tight" style={{
               fontWeight: '600'
             }}>
-              CondoApp
+              Vivesoft
             </span>
           </div>
           <p className="mb-6 leading-relaxed max-w-2xl mx-auto" style={{ 
@@ -52,7 +52,7 @@ export function Footer() {
           }}
         >
           <p style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
-            © 2026 CondoApp. Todos los derechos reservados.
+            © 2026 ViveSoft. Todos los derechos reservados.
           </p>
           <div className="flex gap-8">
             {['Privacidad', 'Términos', 'Cookies'].map((item) => (

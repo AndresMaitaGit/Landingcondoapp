@@ -26,14 +26,14 @@ export function CTASection() {
 
   const openWhatsApp = () => {
     const phoneNumber = '584243145815'; // Número sin espacios ni caracteres especiales
-    const message = encodeURIComponent('¡Hola! Me gustaría agendar una demostración de CondoApp para conocer más sobre la plataforma de gestión de condominios.');
+    const message = encodeURIComponent('¡Hola! Me gustaría agendar una demostración de ViveSoft para conocer más sobre la plataforma de gestión de condominios.');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
 
   return (
     <section id="contact" className="py-28 px-6 relative overflow-hidden" style={{
-      background: 'linear-gradient(135deg, #5B8DEF 0%, #4CAF50 100%)'
+      background: 'linear-gradient(135deg, #5B8DEF 0%, #062c41 100%)'
     }}>
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
