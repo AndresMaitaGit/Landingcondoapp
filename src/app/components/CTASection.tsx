@@ -25,14 +25,14 @@ export function CTASection() {
   }, []);
 
   const openWhatsApp = () => {
-    const phoneNumber = '584243145815'; // Número sin espacios ni caracteres especiales
+    const phoneNumber = '584227144953'; // Número sin espacios ni caracteres especiales
     const message = encodeURIComponent('¡Hola! Me gustaría agendar una demostración de ViveSoft para conocer más sobre la plataforma de gestión de condominios.');
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
 
   return (
-    <section id="contact" className="py-28 px-6 relative overflow-hidden" style={{
+    <section id="contact" className="py-40 px-6 relative overflow-hidden" style={{
       background: 'linear-gradient(135deg, #5B8DEF 0%, #062c41 100%)'
     }}>
       {/* Animated background elements */}
@@ -127,7 +127,7 @@ export function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-5 justify-center items-center"
           >
             {/* <button className="group px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 flex items-center gap-3 hover:shadow-2xl" style={{
               backgroundColor: 'white',
@@ -150,7 +150,7 @@ export function CTASection() {
             </button>
           </motion.div>
 
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -178,7 +178,7 @@ export function CTASection() {
               </svg>
               <span className="font-medium">+58 (424) 314-5815</span>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
 

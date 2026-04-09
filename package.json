@@ -4,9 +4,11 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite --port 3002"
-  },
+  "build": "vite build",
+  "dev": "vite --port 3003 --host 0.0.0.0",
+  "start:prod": "npx serve -s dist -l 3003 --host 0.0.0.0",
+  "start": "npm run start:prod"
+},
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
