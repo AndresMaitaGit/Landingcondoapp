@@ -24,10 +24,10 @@ export function Header() {
     document.documentElement.classList.toggle('dark');
   };
 
-  const scrollToCTA = () => {
-    const ctaSection = document.getElementById('contact');
-    if (ctaSection) {
-      ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToTrialForm = () => {
+    const formSection = document.getElementById('trial-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -80,13 +80,39 @@ export function Header() {
               />
             </a>
             <a 
-              href="#contact" 
+              href="#video-demo" 
               className="relative transition-all duration-300 group"
               style={{
                 color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'rgba(15, 20, 25, 0.7)'
               }}
             >
-              <span className="relative z-10">Contacto</span>
+              <span className="relative z-10">Demo</span>
+              <span 
+                className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                style={{ backgroundColor: '#5B8DEF' }}
+              />
+            </a>
+            <a 
+              href="#pricing" 
+              className="relative transition-all duration-300 group"
+              style={{
+                color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'rgba(15, 20, 25, 0.7)'
+              }}
+            >
+              <span className="relative z-10">Precios</span>
+              <span 
+                className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                style={{ backgroundColor: '#5B8DEF' }}
+              />
+            </a>
+            <a 
+              href="#trial-form" 
+              className="relative transition-all duration-300 group"
+              style={{
+                color: isDark ? 'rgba(255, 255, 255, 0.7)' : 'rgba(15, 20, 25, 0.7)'
+              }}
+            >
+              <span className="relative z-10">Prueba</span>
               <span 
                 className="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
                 style={{ backgroundColor: '#5B8DEF' }}
@@ -115,9 +141,9 @@ export function Header() {
                 fontWeight: '500',
                 boxShadow: '0 8px 24px rgba(91, 141, 239, 0.35)'
               }}
-              onClick={scrollToCTA}
+              onClick={scrollToTrialForm}
             >
-              Comenzar
+              Solicitar prueba
             </button>
           </div>
         </nav>

@@ -1,44 +1,5 @@
-import { Users, DollarSign, TrendingUp, CreditCard, PiggyBank } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
-
-const kpiData = [
-  {
-    title: 'Propietarios Solventes',
-    value: '248',
-    icon: Users,
-    color: '#3B82F6',
-    gradient: 'linear-gradient(135deg, #3B82F6 0%, #7BA5F5 100%)',
-  },
-  {
-    title: 'Propietarios Deudores',
-    value: '12',
-    icon: Users,
-    color: '#EF5350',
-    gradient: 'linear-gradient(135deg, #EF5350 0%, #E57373 100%)',
-  },
-  {
-    title: 'Pagos Anuales',
-    value: '$2.4M',
-    icon: TrendingUp,
-    color: '#5B8DEF',
-    gradient: 'linear-gradient(135deg, #5B8DEF 0%, #7BA5F5 100%)',
-  },
-  {
-    title: 'Cuentas por Cobrar',
-    value: '$84K',
-    icon: CreditCard,
-    color: '#FF9800',
-    gradient: 'linear-gradient(135deg, #FF9800 0%, #FFB74D 100%)',
-  },
-  {
-    title: 'Saldo Anual',
-    value: '$1.8M',
-    icon: PiggyBank,
-    color: '#00BCD4',
-    gradient: 'linear-gradient(135deg, #00BCD4 0%, #4DD0E1 100%)',
-  },
-];
 
 export function HeroSection() {
   const [isDark, setIsDark] = useState(false);
@@ -55,10 +16,10 @@ export function HeroSection() {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToCTA = () => {
-    const ctaSection = document.getElementById('contact');
-    if (ctaSection) {
-      ctaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToTrialForm = () => {
+    const formSection = document.getElementById('trial-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -108,7 +69,7 @@ export function HeroSection() {
               fontSize: '0.875rem'
             }}
           >
-            ✨ La plataforma más completa para condominios
+            ✨ Gestion moderna para condominios
           </motion.div>
 
           <h1 className="text-6xl md:text-7xl lg:text-8xl mb-8 tracking-tight" style={{
@@ -117,7 +78,7 @@ export function HeroSection() {
             lineHeight: '1.1',
             letterSpacing: '-0.02em'
           }}>
-            Simplifica la Gestión
+            Administra tu condominio
             <br />
             <span style={{
               background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
@@ -125,7 +86,7 @@ export function HeroSection() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              de Tu Condominio
+              sin estres y en automatico
             </span>
           </h1>
           
@@ -138,7 +99,7 @@ export function HeroSection() {
               color: isDark ? 'rgba(255, 255, 255, 0.6)' : 'rgba(15, 20, 25, 0.6)'
             }}
           >
-            Control total, transparencia absoluta. Gestiona propietarios, pagos y finanzas con la plataforma más avanzada del mercado.
+            Deja de perder horas en Excel y WhatsApp. El software disenado para hacerle la vida mas facil a las juntas de condominio y administradores.
           </motion.p>
           
           <motion.div 
@@ -148,7 +109,7 @@ export function HeroSection() {
             className="flex flex-col sm:flex-row gap-5 justify-center items-center"
           >
             <button 
-              onClick={scrollToCTA}
+              onClick={scrollToTrialForm}
               className="group px-10 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3" 
               style={{
                 background: 'linear-gradient(135deg, #5B8DEF 0%, #3B82F6 100%)',
@@ -158,7 +119,7 @@ export function HeroSection() {
                 boxShadow: '0 12px 40px rgba(91, 141, 239, 0.4)'
               }}
             >
-              <span>Comenzar Ahora</span>
+              <span>Solicitar mi prueba gratuita</span>
               <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -166,70 +127,6 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {kpiData.map((kpi, index) => {
-            const Icon = kpi.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group rounded-2xl p-7 transition-all duration-500 cursor-pointer"
-                style={{
-                  background: isDark 
-                    ? 'rgba(30, 33, 57, 0.6)'
-                    : 'rgba(255, 255, 255, 0.9)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: `1px solid ${isDark ? 'rgba(255, 255, 255, 0.06)' : 'rgba(0, 0, 0, 0.06)'}`,
-                  boxShadow: isDark 
-                    ? '0 8px 32px rgba(0, 0, 0, 0.3)'
-                    : '0 8px 32px rgba(0, 0, 0, 0.08)'
-                }}
-              >
-                <div 
-                  className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6" 
-                  style={{
-                    background: kpi.gradient,
-                    boxShadow: `0 8px 24px ${kpi.color}40`
-                  }}
-                >
-                  <Icon className="w-7 h-7 text-white" />
-                </div>
-                
-                <h3 className="text-sm mb-3 tracking-wide" style={{ 
-                  color: isDark ? 'rgba(255, 255, 255, 0.5)' : 'rgba(15, 20, 25, 0.5)',
-                  fontWeight: '500'
-                }}>
-                  {kpi.title}
-                </h3>
-                
-                <p className="text-4xl tracking-tight" style={{ 
-                  color: kpi.color,
-                  fontWeight: '700'
-                }}>
-                  {kpi.value}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
-          className="mt-20 text-center"
-        >
-          <p className="text-sm tracking-wide" style={{ 
-            color: isDark ? 'rgba(255, 255, 255, 0.4)' : 'rgba(15, 20, 25, 0.4)',
-            fontWeight: '500'
-          }}>
-            Vista previa de tus indicadores principales en tiempo real
-          </p>
-        </motion.div>
       </div>
 
       <style>{`

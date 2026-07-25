@@ -1,7 +1,9 @@
 import { Header } from "./components/Header";
 import { HeroSection } from "./components/HeroSection";
+import { VideoDemoSection } from "./components/VideoDemoSection";
 import { FeaturesSection } from "./components/FeaturesSection";
 import { TestimonialsSection } from "./components/TestimonialsSection";
+import { PricingSection } from "./components/PricingSection";
 import { CTASection } from "./components/CTASection";
 import { Footer } from "./components/Footer";
 import { useEffect, useState } from "react";
@@ -36,7 +38,9 @@ export default function App() {
       <Header />
       <main className="w-full">
         <HeroSection />
+        <VideoDemoSection />
         <FeaturesSection />
+        <PricingSection />
         {/* <TestimonialsSection /> */}
         <CTASection />
       </main>

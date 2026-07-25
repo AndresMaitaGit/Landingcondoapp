@@ -1,16 +1,18 @@
-import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
+import { ShieldCheck, Send, Sparkles } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
-
-const benefits = [
-  'Sin tarjeta de crédito requerida',
-  'Configuración rapida y segura',
-  'Soporte dedicado todos los dias',
-  'Garantía de satisfacción total',
-];
+import type { ChangeEvent, FormEvent } from 'react';
 
 export function CTASection() {
   const [isDark, setIsDark] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    condoName: '',
+    location: '',
+    totalUnits: '',
+  });
 
   useEffect(() => {
     const checkTheme = () => {
@@ -24,15 +26,31 @@ export function CTASection() {
     return () => observer.disconnect();
   }, []);
 
-  const openWhatsApp = () => {
-    const phoneNumber = '584227144953'; // Número sin espacios ni caracteres especiales
-    const message = encodeURIComponent('¡Hola! Me gustaría agendar una demostración de ViveSoft para conocer más sobre la plataforma de gestión de condominios.');
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-    window.open(whatsappUrl, '_blank');
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+
+    const payload = {
+      ...formData,
+      submittedAt: new Date().toISOString(),
+    };
+
+    localStorage.setItem('vivesoft_trial_request', JSON.stringify(payload));
+
+    const thankYouUrl = `/gracias?condominio=${encodeURIComponent(formData.condoName)}`;
+    window.location.href = thankYouUrl;
   };
 
   return (
-    <section id="contact" className="py-40 px-6 relative overflow-hidden" style={{
+    <section id="trial-form" className="py-32 px-6 relative overflow-hidden" style={{
       background: 'linear-gradient(135deg, #5B8DEF 0%, #062c41 100%)'
     }}>
       {/* Animated background elements */}
@@ -77,7 +95,7 @@ export function CTASection() {
             }}
           >
             <Sparkles className="w-4 h-4" />
-            <span>Oferta exclusiva</span>
+            <span>Prueba gratuita</span>
           </motion.div>
 
           <h2 className="text-5xl md:text-6xl mb-8 tracking-tight" style={{
@@ -85,100 +103,157 @@ export function CTASection() {
             fontWeight: '700',
             letterSpacing: '-0.02em'
           }}>
-            ¿Listo para Transformar
+            Solicita tu acceso
             <br />
-            tu Condominio?
+            a ViveSoft
           </h2>
           <p className="text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style={{
             color: 'rgba(255, 255, 255, 0.9)'
           }}>
-            Únete y disfruta de una gestión más eficiente, transparente y profesional
+            Completa este formulario para activar tu prueba gratuita.
+            Nos ayuda a preparar tu espacio de trabajo con datos reales de tu condominio.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto mb-12">
-            {benefits.map((benefit, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                className="flex items-center gap-4 rounded-2xl px-7 py-5 transition-all duration-300 hover:scale-105" 
-                style={{
-                  background: 'rgba(255, 255, 255, 0.15)',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  color: 'white'
-                }}
-              >
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{
-                  background: 'rgba(255, 255, 255, 0.2)'
-                }}>
-                  <CheckCircle className="w-5 h-5" />
-                </div>
-                <span className="text-left font-medium">{benefit}</span>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div 
+          <motion.form
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center items-center"
+            transition={{ duration: 0.7, delay: 0.25 }}
+            onSubmit={handleSubmit}
+            className="max-w-4xl mx-auto rounded-3xl p-6 md:p-8"
+            style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.22)',
+            }}
           >
-            {/* <button className="group px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 flex items-center gap-3 hover:shadow-2xl" style={{
-              backgroundColor: 'white',
-              color: '#5B8DEF',
-              fontSize: '1.125rem',
-              fontWeight: '600',
-              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.2)'
-            }}>
-              <span>Comenzar Prueba Gratuita</span>
-              <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </button> */}
-            <button className="px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105" style={{
-              backgroundColor: 'transparent',
-              color: 'white',
-              border: '2px solid rgba(255, 255, 255, 0.4)',
-              fontSize: '1.125rem',
-              fontWeight: '600'
-            }} onClick={openWhatsApp}>
-              Agendar Demostración
-            </button>
-          </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+              <div className="text-left">
+                <label htmlFor="fullName" className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+                  Nombre y Apellido
+                </label>
+                <input
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  required
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  className="w-full rounded-xl px-4 py-3 outline-none"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.96)',
+                    color: '#0F1419',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                  }}
+                />
+              </div>
 
-          {/* <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col md:flex-row justify-center items-center gap-8 text-white"
-          >
-            <div className="flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105" style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)'
-            }}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-              <span className="font-medium">andresmape2@gmail.com</span>
+              <div className="text-left">
+                <label htmlFor="email" className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+                  Correo electronico
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full rounded-xl px-4 py-3 outline-none"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.96)',
+                    color: '#0F1419',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                  }}
+                />
+              </div>
+
+              <div className="text-left">
+                <label htmlFor="condoName" className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+                  Nombre del Condominio o Edificio
+                </label>
+                <input
+                  id="condoName"
+                  name="condoName"
+                  type="text"
+                  required
+                  value={formData.condoName}
+                  onChange={handleChange}
+                  className="w-full rounded-xl px-4 py-3 outline-none"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.96)',
+                    color: '#0F1419',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                  }}
+                />
+              </div>
+
+              <div className="text-left">
+                <label htmlFor="location" className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+                  Pais / Ciudad
+                </label>
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  required
+                  value={formData.location}
+                  onChange={handleChange}
+                  className="w-full rounded-xl px-4 py-3 outline-none"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.96)',
+                    color: '#0F1419',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                  }}
+                />
+              </div>
+
+              <div className="text-left md:col-span-2">
+                <label htmlFor="totalUnits" className="block text-sm mb-2" style={{ color: 'rgba(255, 255, 255, 0.95)' }}>
+                  Numero total de apartamentos/casas en el condominio
+                </label>
+                <input
+                  id="totalUnits"
+                  name="totalUnits"
+                  type="number"
+                  min="1"
+                  required
+                  value={formData.totalUnits}
+                  onChange={handleChange}
+                  className="w-full rounded-xl px-4 py-3 outline-none"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.96)',
+                    color: '#0F1419',
+                    border: '1px solid rgba(255, 255, 255, 0.35)',
+                  }}
+                />
+              </div>
             </div>
-            <div className="flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105" style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)'
-            }}>
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              <span className="font-medium">+58 (424) 314-5815</span>
+
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="inline-flex items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                <ShieldCheck className="w-5 h-5" />
+                <p className="text-sm text-left">Tus datos se usan solo para configurar tu prueba y contactarte.</p>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl transition-all duration-300 hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  color: '#2057b9',
+                  fontWeight: '700',
+                  boxShadow: '0 10px 24px rgba(0, 0, 0, 0.18)',
+                }}
+              >
+                <Send className="w-4 h-4" />
+                {isSubmitting ? 'Enviando...' : 'Enviar solicitud de prueba'}
+              </button>
             </div>
-          </motion.div> */}
+          </motion.form>
+
         </motion.div>
       </div>
 
