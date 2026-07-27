@@ -1,8 +1,7 @@
 import { PlayCircle, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
-
-const DEMO_VIDEO_URL = 'https://www.youtube.com/embed/9No-FiEInLA';
+import demoVideo from '../video/0727.mp4';
 
 const demoPoints = [
   'Recorrido completo del panel de ViveSoft',
@@ -97,14 +96,11 @@ export function VideoDemoSection() {
           }}
         >
           <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black">
-            <iframe
-              title="Demo de ViveSoft"
-              src={DEMO_VIDEO_URL}
-              className="w-full h-full"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+            <video
+              src={demoVideo}
+              controls
+              playsInline
+              className="w-full h-full object-contain"
             />
           </div>
         </motion.div>
