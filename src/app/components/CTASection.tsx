@@ -3,9 +3,12 @@ import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 
+const REGISTRO_API_URL = 'http://5.189.159.161:3000/api/contact-form/registro';
+
 export function CTASection() {
   const [isDark, setIsDark] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -34,19 +37,36 @@ export function CTASection() {
     }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
 
     const payload = {
-      ...formData,
-      submittedAt: new Date().toISOString(),
+      nombre_y_apellido: formData.fullName,
+      correo_electronico: formData.email,
+      nombre_del_condominio_o_edificio: formData.condoName,
+      pais_ciudad: formData.location,
+      numero_total_de_apartamentos_casas_en_el_condominio: Number(formData.totalUnits),
     };
 
-    localStorage.setItem('vivesoft_trial_request', JSON.stringify(payload));
+    try {
+      const response = await fetch(REGISTRO_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
 
-    const thankYouUrl = `/gracias?condominio=${encodeURIComponent(formData.condoName)}`;
-    window.location.href = thankYouUrl;
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      window.location.href = '/gracias';
+    } catch (error) {
+      console.error('Error al enviar el formulario de registro:', error);
+      setSubmitError('No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.');
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -230,6 +250,12 @@ export function CTASection() {
                 />
               </div>
             </div>
+
+            {submitError && (
+              <p className="text-sm text-left mb-4" style={{ color: '#FFD9D9' }}>
+                {submitError}
+              </p>
+            )}
 
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div className="inline-flex items-center gap-2" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
