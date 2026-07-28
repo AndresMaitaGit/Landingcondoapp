@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 
-const REGISTRO_API_URL = 'http://5.189.159.161:3000/api/contact-form/registro';
+const REGISTRO_API_URL = 'https://apis.vivesoft.site/api/contact-form/registro';
 
 export function CTASection() {
   const [isDark, setIsDark] = useState(false);
